@@ -22,6 +22,7 @@ public class Note : MonoBehaviour {
         transform.localScale = scale;
     }
 
+    //scaleで判定を作成(noteButtonタップで呼び出される)
     public void jugment() {
         if (transform.localScale.x <= 1.2f && transform.localScale.x >= 0.8f){
             //excellent
@@ -41,6 +42,6 @@ public class Note : MonoBehaviour {
             //bad
             changeText.WriteTex("bad");
         }
-        scale = new Vector3(4, 4, 1);
+        //Destroy();
     }
 }

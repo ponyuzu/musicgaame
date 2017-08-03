@@ -37,6 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224833147109245928}
+  - component: {fileID: 114360506864351472}
   m_Layer: 5
   m_Name: PlayMusicButton
   m_TagString: Untagged
@@ -203,6 +204,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114360506864351472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479601496039994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3fc283085da53142a5b2d950b102df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114464743681030600
 MonoBehaviour:
   m_ObjectHideFlags: 1

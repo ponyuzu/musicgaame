@@ -5,16 +5,9 @@ using System.IO;
 
 public class LoadFile : MonoBehaviour {
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
+    //戻り値：Data.csの配列(ノーツが出てくる時間と場所)
+    //引数：txtファイルのパス（Assets内のResourcesフォルダからの相対パス）
+    //内容：指定されたファイルをロードし、値を返します
     public Data Load(string filePass) {
 
         TextAsset txt = Resources.Load(filePass) as TextAsset;
@@ -34,7 +27,9 @@ public class LoadFile : MonoBehaviour {
             }
             i++;
         }
+        data.maxNotes = i;
 
+        reader.Close();
         return data;
     }
 }
