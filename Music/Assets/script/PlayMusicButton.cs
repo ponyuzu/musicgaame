@@ -1,23 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayMusicButton : MonoBehaviour {
+    [SerializeField]
+    Note note;
 
-    RectTransform rectTransform;
+    MusicManager musicManager;
+    SpriteRenderer sr;
+    Color color;
+    const float feadSpeed = 2;
+    bool isfade;
+    Collider2D col;
+
     // Use this for initialization
     void Start () {
-        
+        sr = GetComponent<SpriteRenderer>();
+        col = GetComponent<Collider2D>();
+        musicManager = GameObject.Find("MusicManager").GetComponent<MusicManager>();
+        isfade = false;
+        color = sr.color;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+         if (musicManager.GetTapCol() == col) {
+            note.jugment();
+            isfade = true;
+         }
 
-    public void Create(Vector2 pos) {
-        rectTransform = GetComponent<RectTransform>();
-        rectTransform.localPosition = pos;
-    } 
+        if (isfade) {
+            color.a -= feadSpeed * Time.deltaTime;
+            sr.color = color;
+        }
+
+        if (color.a < 0) {
+            Destroy(gameObject);
+        }
+    }
 }

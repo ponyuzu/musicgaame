@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour {
     [SerializeField]
-    GameObject PlayMusicButton;
+    GameObject button;
 
     Data data;
-    LoadFile loadFile;
+    FileOperation loadFile;
     const float speed = 1.0f;
     float timeCount;
     int notesCount;
+    Collider2D tapCol;
 
     // Use this for initialization
     void Start () {
-        loadFile = new LoadFile();
+        loadFile = new FileOperation();
         data = loadFile.Load("music");
         timeCount = 0;
         notesCount = 0;
@@ -25,12 +26,21 @@ public class MusicManager : MonoBehaviour {
         timeCount += speed * Time.deltaTime;
         Debug.Log(timeCount);
 
-        if (notesCount < data.maxNotes && timeCount > data.times[notesCount]) {
-            GameObject InstantObj = Instantiate(PlayMusicButton);
-            InstantObj.transform.SetParent(GameObject.Find("Canvas").transform, false);
-            PlayMusicButton playerMusicButton = InstantObj.GetComponent<PlayMusicButton>();
-            playerMusicButton.Create(data.positions[notesCount]);
+        //PlayMusicButtonを生成
+        if (notesCount < data.maxNotes && timeCount > data.times[notesCount] - 3) {
+            Instantiate(button).transform.position = data.positions[notesCount];
             notesCount++;
         }
+
+        //タップした場所のcollider２Dを取得
+        tapCol = null;
+        if (Input.GetMouseButtonDown(0)) {
+            Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition + Camera.main.transform.forward * 10);
+            tapCol = Physics2D.OverlapPoint(point);
+        }
+    }
+
+    public Collider2D GetTapCol() {
+        return tapCol;
     }
 }

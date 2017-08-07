@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class LoadFile : MonoBehaviour {
+public class FileOperation : MonoBehaviour {
 
     //戻り値：Data.csの配列(ノーツが出てくる時間と場所)
     //引数：txtファイルのパス（Assets内のResourcesフォルダからの相対パス）
@@ -31,5 +31,24 @@ public class LoadFile : MonoBehaviour {
 
         reader.Close();
         return data;
+    }
+
+    public void Write(string filePass , Data data){
+        StreamWriter sw;
+
+        // ファイルを初期化
+        sw = new StreamWriter(filePass, false, System.Text.Encoding.GetEncoding("shift_jis"));
+
+        //Todo:いい書き方にする
+        for (int i = 0; i < data.times.Length; i++) {
+            if (data.times[i] != 0) {
+                sw.Write(data.times[i] + "," + data.positions[i].x + "," + data.positions[i].y + "\n");
+            }
+        }
+
+        sw.Flush();
+        sw.Close();
+
+        Debug.Log("セーブ");
     }
 }

@@ -1,23 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ChangeText : MonoBehaviour {
-
+public class Score : MonoBehaviour {
     TextMesh tex;
-    
+    int score;
+
 	// Use this for initialization
 	void Start () {
         tex = GetComponent<TextMesh>();
-    }
+        score = 0;
+     }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    public void WriteTex(string changeTex) {
-        tex.text = changeTex;
+    public void AddScore(int add){
+        score += add;
+        tex.text = "スコア："+ score;
     }
 }
