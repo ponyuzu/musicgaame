@@ -7,14 +7,14 @@ public class MusicManager : MonoBehaviour {
     GameObject PlayMusicButton;
 
     Data data;
-    LoadFile loadFile;
+    FileOperation loadFile;
     const float speed = 1.0f;
     float timeCount;
     int notesCount;
 
     // Use this for initialization
     void Start () {
-        loadFile = new LoadFile();
+        loadFile = new FileOperation();
         data = loadFile.Load("music");
         timeCount = 0;
         notesCount = 0;
@@ -23,9 +23,10 @@ public class MusicManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         timeCount += speed * Time.deltaTime;
-        Debug.Log(timeCount);
+        //Debug.Log(timeCount);
 
-        if (notesCount < data.maxNotes && timeCount > data.times[notesCount]) {
+        //PlayMusicButtonをCanvasの下に生成
+        if (notesCount < data.maxNotes && timeCount > data.times[notesCount] - 3) {
             GameObject InstantObj = Instantiate(PlayMusicButton);
             InstantObj.transform.SetParent(GameObject.Find("Canvas").transform, false);
             PlayMusicButton playerMusicButton = InstantObj.GetComponent<PlayMusicButton>();
