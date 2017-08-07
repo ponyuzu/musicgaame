@@ -11,6 +11,7 @@ public class MusicManager : MonoBehaviour {
     const float speed = 1.0f;
     float timeCount;
     int notesCount;
+    Collider2D tapCol;
 
     // Use this for initialization
     void Start () {
@@ -30,5 +31,16 @@ public class MusicManager : MonoBehaviour {
             Instantiate(button).transform.position = data.positions[notesCount];
             notesCount++;
         }
+
+        //タップした場所のcollider２Dを取得
+        tapCol = null;
+        if (Input.GetMouseButtonDown(0)) {
+            Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition + Camera.main.transform.forward * 10);
+            tapCol = Physics2D.OverlapPoint(point);
+        }
+    }
+
+    public Collider2D GetTapCol() {
+        return tapCol;
     }
 }

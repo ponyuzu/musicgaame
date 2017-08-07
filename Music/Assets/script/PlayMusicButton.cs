@@ -6,6 +6,7 @@ public class PlayMusicButton : MonoBehaviour {
     [SerializeField]
     Note note;
 
+    MusicManager musicManager;
     SpriteRenderer sr;
     Color color;
     const float feadSpeed = 2;
@@ -16,21 +17,17 @@ public class PlayMusicButton : MonoBehaviour {
     void Start () {
         sr = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
+        musicManager = GameObject.Find("MusicManager").GetComponent<MusicManager>();
         isfade = false;
         color = sr.color;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        //Todo:この処理はここでいいのか検討
-        if (Input.GetMouseButtonDown(0)){
-            Vector2 point = Camera.main.ScreenToWorldPoint(Input.mousePosition + Camera.main.transform.forward * 10);
-            Collider2D collider2d = Physics2D.OverlapPoint(point);
-            if (collider2d == col) {
-                note.jugment();
-                isfade = true;
-            }
-        }
+         if (musicManager.GetTapCol() == col) {
+            note.jugment();
+            isfade = true;
+         }
 
         if (isfade) {
             color.a -= feadSpeed * Time.deltaTime;
