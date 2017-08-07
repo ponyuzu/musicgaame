@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour {
     [SerializeField]
-    GameObject PlayMusicButton;
+    GameObject button;
 
     Data data;
     FileOperation loadFile;
@@ -27,10 +27,7 @@ public class MusicManager : MonoBehaviour {
 
         //PlayMusicButtonをCanvasの下に生成
         if (notesCount < data.maxNotes && timeCount > data.times[notesCount] - 3) {
-            GameObject InstantObj = Instantiate(PlayMusicButton);
-            InstantObj.transform.SetParent(GameObject.Find("Canvas").transform, false);
-            PlayMusicButton playerMusicButton = InstantObj.GetComponent<PlayMusicButton>();
-            playerMusicButton.Create(data.positions[notesCount]);
+            Instantiate(button).transform.position = data.positions[notesCount];
             notesCount++;
         }
     }

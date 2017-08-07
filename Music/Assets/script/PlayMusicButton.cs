@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayMusicButton : MonoBehaviour {
 
-    RectTransform rectTransform;
     // Use this for initialization
     void Start () {
         
@@ -15,9 +14,4 @@ public class PlayMusicButton : MonoBehaviour {
 	void Update () {
 		
 	}
-
-    public void Create(Vector2 pos) {
-        rectTransform = GetComponent<RectTransform>();
-        rectTransform.localPosition = pos;
-    } 
 }
