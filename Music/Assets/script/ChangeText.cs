@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class ChangeText : MonoBehaviour {
 
-    Text tex;
+    TextMesh tex;
     
 	// Use this for initialization
 	void Start () {
-        tex = GetComponent<Text>();
+        tex = GetComponent<TextMesh>();
     }
 	
 	// Update is called once per frame

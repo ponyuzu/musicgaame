@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Note : MonoBehaviour {
-    //[SerializeField]
-    //ChangeText changeText;
+    [SerializeField]
+    ChangeText changeText;
 
-    const float speed = 4.0f;
+    const float speed = 1.0f;
     Vector3 scale;
 
     // Use this for initialization
@@ -26,21 +26,21 @@ public class Note : MonoBehaviour {
     public void jugment() {
         if (transform.localScale.x <= 1.2f && transform.localScale.x >= 0.8f){
             //excellent
-            //changeText.WriteTex("excellent");
+            changeText.WriteTex("excellent");
         }
         else if (transform.localScale.x <= 1.6f && transform.localScale.x > 1.2f ||
                  transform.localScale.x < 0.8f && transform.localScale.x >= 0.4f) {
             //great
-            //changeText.WriteTex("great");
+            changeText.WriteTex("great");
         }
         else if (transform.localScale.x <= 2.0f && transform.localScale.x > 1.6f ||
                  transform.localScale.x < 0.4f && transform.localScale.x > 0.0f){
             //good
-            //changeText.WriteTex("good");
+            changeText.WriteTex("good");
         }
         else {
             //bad
-            //changeText.WriteTex("bad");
+            changeText.WriteTex("bad");
         }
         Destroy(gameObject);
     }

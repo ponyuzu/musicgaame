@@ -35,13 +35,17 @@ public class FileOperation : MonoBehaviour {
 
     public void Write(string filePass , Data data){
         StreamWriter sw;
-        FileInfo fi;
 
-        fi = new FileInfo(filePass);
-        sw = fi.AppendText();
+        // ファイルを初期化
+        sw = new StreamWriter(filePass, false, System.Text.Encoding.GetEncoding("shift_jis"));
+
+        //Todo:いい書き方にする
         for (int i = 0; i < data.times.Length; i++) {
-            sw.WriteLine(data.times[i] + "," + data.positions[i].x + "," + data.positions[i].y);
+            if (data.times[i] != 0) {
+                sw.Write(data.times[i] + "," + data.positions[i].x + "," + data.positions[i].y + "\n");
+            }
         }
+
         sw.Flush();
         sw.Close();
 

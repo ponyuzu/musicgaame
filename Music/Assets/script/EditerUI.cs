@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EditerUI : MonoBehaviour {
 
-    const float feadSpeed = 1f;
+    const float feadSpeed = 1;
     SpriteRenderer sr;
     Color color;
 
