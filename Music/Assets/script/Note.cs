@@ -6,7 +6,7 @@ public class Note : MonoBehaviour {
     [SerializeField]
     ChangeText changeText;
 
-    const float speed = 4.0f;
+    const float speed = 1.0f;
     Vector3 scale;
 
     // Use this for initialization
@@ -42,6 +42,6 @@ public class Note : MonoBehaviour {
             //bad
             changeText.WriteTex("bad");
         }
-        Destroy(gameObject);
+        //Destroy();
     }
 }
