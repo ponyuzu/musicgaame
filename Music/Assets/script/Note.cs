@@ -24,9 +24,14 @@ public class Note : MonoBehaviour {
         scale.x -= speed * Time.deltaTime;
         scale.y -= speed * Time.deltaTime;
         transform.localScale = scale;
+
+        //タップが遅れたときの判定
+        if (transform.localScale.x < 0.0f){
+            jugment();
+        }
     }
 
-    //scaleで判定を作成(noteButtonタップで呼び出される)
+    //scaleで判定をするような作りになっている
     public void jugment() {
         if (transform.localScale.x <= 1.2f && transform.localScale.x >= 0.8f){
             //excellent

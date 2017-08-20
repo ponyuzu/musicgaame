@@ -17,6 +17,8 @@ public class Score : MonoBehaviour {
 		
 	}
 
+    //スコア加算
+    //引数：加える値
     public void AddScore(int add){
         score += add;
         tex.text = "スコア："+ score;

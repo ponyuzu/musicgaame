@@ -24,16 +24,24 @@ public class PlayMusicButton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        //タップしたときに判定を呼び出す
          if (musicManager.GetTapCol() == col) {
             note.jugment();
-            isfade = true;
          }
 
+        //noteが無くなったらボタンをフェードを開始
+        if (!note) {
+            isfade = true;
+        }
+
+        //フェード処理
         if (isfade) {
             color.a -= feadSpeed * Time.deltaTime;
             sr.color = color;
         }
 
+        //フェードしきったら消去
         if (color.a < 0) {
             Destroy(gameObject);
         }

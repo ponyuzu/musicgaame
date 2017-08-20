@@ -18,13 +18,17 @@ public class Combo : MonoBehaviour {
 		
 	}
 
+    //コンボ数を足す
     public void AddCombo() {
         combo += 1;
         tex.text = "コンボ：" + combo;
     }
 
+    //コンボをリセットする
     public void ComboReset() {
         combo = 0;
         tex.text = "コンボ：" + combo;
     }
+
+    //Todo：スコア最高記録を保持する＆最後に出す
 }
