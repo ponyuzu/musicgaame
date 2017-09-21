@@ -59,10 +59,4 @@ public class MusicManager : MonoBehaviour {
     public bool GetMusicEnd() {
         return isMusicEnd;
     }
-
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(20, 20, 150, 150), Application.dataPath + "/music/music.txt");
-        //GUI.Label(new Rect(20, 150, 150, 300), data.times[0].ToString());
-    }
 }
