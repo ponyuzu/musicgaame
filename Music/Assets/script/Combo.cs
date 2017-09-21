@@ -3,32 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Combo : MonoBehaviour {
+    [SerializeField]
+    MusicManager musicManager;
+    [SerializeField]
+    ChangeText changeTex;
 
-    TextMesh tex;
     int combo;
+     int maxCombo;
 
-    // Use this for initialization
     void Start () {
-        tex = GetComponent<TextMesh>();
         combo = 0;
     }
 	
-	// Update is called once per frame
 	void Update () {
-		
+        if (musicManager.GetMusicEnd()) {
+            Destroy(gameObject);
+        }
 	}
 
     //コンボ数を足す
     public void AddCombo() {
         combo += 1;
-        tex.text = "コンボ：" + combo;
+        MaxCombo();
+        changeTex.WriteTex("COMBO：" + combo);
     }
 
     //コンボをリセットする
     public void ComboReset() {
         combo = 0;
-        tex.text = "コンボ：" + combo;
+        changeTex.WriteTex("COMBO：" + combo);
     }
 
-    //Todo：スコア最高記録を保持する＆最後に出す
+    //スコア最高記録を保持する
+    void MaxCombo() {
+        if (combo > maxCombo) {
+            maxCombo = combo;
+        }
+    }
+
+    //最高記録を渡す
+    public int GetMaxCombo() {
+        return maxCombo;
+    }
 }

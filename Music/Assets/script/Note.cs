@@ -8,10 +8,9 @@ public class Note : MonoBehaviour {
 
     Score score;
     Combo combo;
-    const float speed = 1.0f;
+    const float speed = 2.0f;
     Vector3 scale;
 
-    // Use this for initialization
     void Start () {
         score = GameObject.Find("Score").GetComponent<Score>();
         combo = GameObject.Find("Combo").GetComponent<Combo>();
@@ -19,7 +18,6 @@ public class Note : MonoBehaviour {
         scale = transform.localScale;
     }
 	
-	// Update is called once per frame
 	void Update () {
         scale.x -= speed * Time.deltaTime;
         scale.y -= speed * Time.deltaTime;

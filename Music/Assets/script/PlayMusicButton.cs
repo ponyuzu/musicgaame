@@ -13,7 +13,6 @@ public class PlayMusicButton : MonoBehaviour {
     bool isfade;
     Collider2D col;
 
-    // Use this for initialization
     void Start () {
         sr = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
@@ -22,7 +21,6 @@ public class PlayMusicButton : MonoBehaviour {
         color = sr.color;
     }
 	
-	// Update is called once per frame
 	void Update () {
 
         //タップしたときに判定を呼び出す

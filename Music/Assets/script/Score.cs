@@ -3,24 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Score : MonoBehaviour {
-    TextMesh tex;
+    [SerializeField]
+    MusicManager musicManager;
+    [SerializeField]
+    ChangeText changeTex;
+
     int score;
 
-	// Use this for initialization
 	void Start () {
-        tex = GetComponent<TextMesh>();
         score = 0;
      }
 	
-	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (musicManager.GetMusicEnd()){
+            Destroy(gameObject);
+        }
+    }
 
     //スコア加算
     //引数：加える値
     public void AddScore(int add){
         score += add;
-        tex.text = "スコア："+ score;
+        changeTex.WriteTex("SCORE："+ score);
+    }
+
+    public int GetScore() {
+        return score;
     }
 }
