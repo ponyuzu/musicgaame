@@ -24,7 +24,7 @@ public class PlayMusicButton : MonoBehaviour {
 	void Update () {
 
         //タップしたときに判定を呼び出す
-         if (musicManager.GetTapCol() == col) {
+         if (note && musicManager.GetTapCol() == col) {
             note.jugment();
          }
 
