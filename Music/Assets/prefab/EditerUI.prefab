@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212032163424491348}
   - component: {fileID: 114427219512838244}
   m_Layer: 0
-  m_Name: EditorUI
+  m_Name: EditerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
